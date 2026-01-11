@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رسالة فالنتاين</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffc9e0 0%, #e0c3fc 100%);
+            min-height: 300vh;
+            padding: 20px;
+        }
+
+        .notepad {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fce4ec;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 20px;
+        }
+
+        .notepad-header {
+            background: #f8bbd0;
+            padding: 15px 20px;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+        }
+
+        .heart {
+            color: #d81b60;
+            font-size: 24px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-circle {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+
+        .btn-pink { background: #f48fb1; }
+        .btn-purple { background: #ba68c8; }
+        .btn-gray { background: #bdbdbd; }
+
+        .menu-bar {
+            background: #f48fb1;
+            padding: 8px 15px;
+            color: white;
+            display: flex;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .notepad-content {
+            padding: 30px;
+            background: white;
+            border-radius: 0 0 20px 20px;
+            min-height: 400px;
+        }
+
+        .date-info, .message-info {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .message-text {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 30px;
+            transition: opacity 0.5s ease;
+        }
+
+        .message-text.hidden {
+            display: none;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #f48fb1 0%, #ce93d8 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(244, 143, 177, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(244, 143, 177, 0.6);
+        }
+
+        .action-btn:active {
+            transform: translateY(0);
+        }
+
+        .scroll-indicator {
+            text-align: center;
+            padding: 40px;
+            color: white;
+            font-size: 18px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="notepad">
+        <div class="notepad-header">
+            <div class="title">
+                <span class="heart">♡</span>
+                <span>Notepad</span>
+            </div>
+            <div class="buttons">
+                <div class="btn-circle btn-pink"></div>
+                <div class="btn-circle btn-purple"></div>
+                <div class="btn-circle btn-gray"></div>
+            </div>
+        </div>
+        
+        <div class="menu-bar">
+            <span>File</span>
+            <span>Edit</span>
+            <span>Format</span>
+            <span>View</span>
+            <span>Help</span>
+        </div>
+
+
+<div class="notepad-content">
+            <div class="date-info">Date | 14 February 2025</div>
+            <div class="message-info">Message | Happy Valentine</div>
+
+            <div id="message1" class="message-text">
+                <p>Hello! In this special day, I want to say things from the deepest part of my heart—the part that holds all the gratitude and warmth for having you as a friend. Thank you for being here, for sharing your light, and for simply being you. I hope life always surrounds you with love, with people who cherish you just as much as you deserve. May happiness find its way to you, not just today, but in every moment of every year ahead. ♡</p>
+            </div>
+
+            <div id="message2" class="message-text hidden">
+                <p>🌹 كل عام وأنت بخير! في هذا اليوم المميز، أريد أن أخبرك كم أنت شخص رائع ومميز. وجودك في حياتي يجعل كل يوم أجمل. شكراً لكل اللحظات الجميلة التي شاركتها معي. أتمنى لك السعادة والفرح دائماً. أنت تستحق كل الحب والتقدير! 💕</p>
+            </div>
+
+            <div id="message3" class="message-text hidden">
+                <p>✨ رسالة خاصة لك: الحياة قصيرة، لكن الذكريات الجميلة معك تجعلها تستحق العيش. أنت نور يضيء طريق من حولك. استمر في كونك هذا الشخص الرائع. العالم أجمل بوجودك فيه. شكراً لكل شيء، ودمت سعيداً! 🌟💖</p>
+            </div>
+
+            <div id="message4" class="message-text hidden">
+                <p>💝 You know what makes you special? It's not just one thing, it's everything. Your kindness, your smile, the way you make people feel valued and heard. The world needs more people like you. Keep shining your light, because you make a difference in ways you might not even realize. Happy Valentine's Day! 🌺</p>
+            </div>
+
+            <div id="message5" class="message-text hidden">
+                <p>🎁 في هذا اليوم الجميل، أريد أن أذكرك بأنك شخص استثنائي. لديك القدرة على جعل الآخرين يبتسمون حتى في أصعب الأوقات. صداقتك هدية ثمينة، وأنا محظوظ لوجودك في حياتي. أتمنى أن يكون هذا العام مليئاً بالإنجازات والأفراح. أنت تستحق كل السعادة! 🎊💕</p>
+            </div>
+
+            <div id="message6" class="message-text hidden">
+                <p>🌈 Life is a journey, and I'm grateful our paths crossed. You've been a source of inspiration and joy. Your positive energy is contagious, and your support means the world to me. May every dream you have come true, and may love and happiness follow you wherever you go. Thank you for being you! 🦋✨</p>
+            </div>
+
+            <div id="message7" class="message-text hidden">
+                <p>💫 رسالة من القلب: أنت شخص نادر في هذا العالم، تملك روحاً جميلة وقلباً نقياً. كل لحظة قضيتها معك كانت ذكرى أعتز بها. شكراً لكونك صديقاً حقيقياً، شكراً لكل الضحكات والدعم. أتمنى أن تحقق كل ما تصبو إليه، وأن تكون سعيداً دائماً. أنت رائع كما أنت! 🌟💖</p>
+            </div>
+
+            <div id="message8" class="message-text hidden">
+                <p>🌹 Final message: As we reach the end of these notes, remember that you are loved, appreciated, and cherished. Your presence in this world makes it a better place. Continue to be kind, continue to be you. The best is yet to come, and I believe in you. Happy Valentine's Day, dear friend! May your heart always be full of love and joy! 💕🎉</p>
+            </div>
+
+            <button id="toggleBtn" class="action-btn">اقرأ المزيد</button>
+        </div>
+    </div>
+
+    <div class="scroll-indicator">
+        ↓ مرر للأسفل لتستمر الرسالة معك ↓
+    </div>
+
+    <script>
+        let currentMessage = 1;
+        const btn = document.getElementById('toggleBtn');
+        const totalMessages = 8;
+
+        // إخفاء كل الرسائل
+        function hideAllMessages() {
+            for (let i = 1; i <= totalMessages; i++) {
+                const msg = document.getElementById(`message${i}`);
+                if (msg) msg.classList.add('hidden');
+            }
+        }
+
+        // عرض رسالة محددة
+        function showMessage(num) {
+            const msg = document.getElementById(`message${num}`);
+            if (msg) msg.classList.remove('hidden');
+        }
+
+
+// تحديث نص الزر
+        function updateButtonText() {
+            if (currentMessage === totalMessages) {
+                btn.textContent = 'العودة للبداية';
+            } else {
+                btn.textContent = 'اقرأ المزيد';
+            }
+        }
+
+        btn.addEventListener('click', function() {
+            hideAllMessages();
+            
+            if (currentMessage < totalMessages) {
+                currentMessage++;
+            } else {
+                currentMessage = 1;
+            }
+            
+            showMessage(currentMessage);
+            updateButtonText();
+        });
+    </script>
+</body>
+</html>

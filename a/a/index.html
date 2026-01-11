@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .firstpage{
+            border: 2px solid black;
+            padding: 10px;
+            height: 250px;
+            margin: 30px auto;
+            width: 400px;
+            border-radius: 20px;
+            margin-top: 70px;
+        }
+        .firstpage .head{
+            margin-left: 20px;
+        }
+        .firstpage .head a{
+            text-decoration: none;
+            border: 1px solid black;
+            border-radius: 10px;
+            display: inline-block;
+            text-align: center;
+            width: 260px;
+            color: black;
+        }
+        #heart, #heartt, #icon{
+            transform: translate(4px);
+        }
+        #icon{
+            transform: translate(-12px);
+        }
+        .firstpage .vid{
+            transform: translateY(-62px);
+            position: relative;
+        }
+        .firstpage .vid video{
+            position: relative;
+            z-index: 1;
+        }
+        .firstpage .vid h1{
+            transform: translateY(-230px);
+            margin-left:10px;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+        .firstpage .vid p{
+            transform: translateY(-250px);
+            margin-left:10px;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+        .firstpage .vid button{
+            border-radius: 10px;
+            padding: 0px;
+            width: 70px;
+            height: 23px;
+            font-size: 13px;
+            transform: translateY(-285px);
+            margin-left:330px;
+            color: black;
+            background-color: rgb(158, 224, 226);
+            position: relative;
+            z-index: 2;
+        }
+        .vid2 video {
+            border-radius: 14px;
+            height: 240px;
+        }
+        .vid2{
+            display: none;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+        }
+        .vid2.active{
+            display: flex;
+        }
+        .vid2 .text h1, .vid2 .text p {
+            color: black;
+            margin: 0;
+        }
+        .time h1{
+            font-family: "Dancing Script", cursive;
+            color: #511f1f;
+            font-size: 30px;
+        }
+        .time p{
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+        }
+        #time{
+            font-size: 15px;
+            color: #7a2020;
+        }
+        .cards{
+            display:flex;
+            gap:15px;
+            padding:20px;
+        }
+        .card{
+            background:linear-gradient(135deg,#6a11cb,#2575fc);
+            color:white;
+            padding:15px;
+            border-radius:15px;
+            width:120px;
+        }
+        #extra1 video{
+            border-radius: 30px;
+        }
+    </style>
+</head>
+<body>
+<nav class="firstpage">
+    <div class="head">
+        <i class="fa-solid fa-circle" id="icon" style="color: #ff0000;"></i>
+        <i class="fa-solid fa-circle" id="icon" style="color: #FFD43B;"></i>
+        <i class="fa-solid fa-circle" id="icon" style="color: #65e66e;"></i>
+        <a href="">https://ourspace.com</a>
+        <i class="fa-solid fa-left-long" style="color: #511f1f;" id="heart" onclick="goBack()"></i>
+        <i class="fa-solid fa-heart" id="heart" style="color: #511f1f;"></i>
+        <i class="fa-solid fa-xmark" id="heartt" onclick="show2()"></i>
+    </div>
+
+    <div class="vid" id="vid" style="display: block;">
+        <video width="400" height="360" autoplay loop>
+            <source src="video_2025-12-20_18-02-36.mp4" type="video/mp4">
+        </video>
+        <h1>Hello,<br> Alaa!</h1>
+        <p>Lorem ipsum dolor,<br> sit amet consectetur <br>adipisicing elit. Officiis</p>
+        <button onclick="hide()">login</button>
+    </div>
+
+<div class="vid2" id="vid2">
+        <video loop style="border-radius: 14px; height: 240px;">
+            <source src="video_2025-12-27_17-59-59.mp4" type="video/mp4">
+        </video>
+        <div class="text">
+            <h1>COULD BE US IN<br>EVERY UNIVERSE</h1>
+            <p>You and Me</p>
+        </div>
+    </div>
+
+    <div class="vid3" id="vid3" style="display: none;">
+        <div class="time">
+            <h1>Our time together and it will be last forever</h1>
+            <p>wow! its been a long time since we met</p>
+        </div>
+        <div id="time">
+            00 month 00 day 00 hour 00 minute 00 second
+        </div>
+    </div>
+
+    <div id="extra1" style="display:none">
+        <video width="320">
+            <source src="video_2026-01-11_18-06-30.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div id="extra2" style="display:none">
+        <video width="400">
+            <source src="video_2026-01-11_18-06-34.mp4" type="video/mp4">
+        </video>
+        <h2 style="font-family: 'Dancing Script', cursive; color:#511f1f; margin-top:10px;">
+            You and me watch them all? yeeeahh
+        </h2>
+    </div>
+
+    <div id="extra3" style="display:none">
+        <video width="400">
+            <source src="video_2026-01-11_18-06-42.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div id="extra4" style="display:none">
+        <video width="400">
+            <source src="video_2026-01-11_18-06-39.mp4" type="video/mp4">
+        </video>
+    </div>
+</nav>
+
+<script>
+let extraStep = 0;
+const extras = ["vid3", "extra1", "extra2", "extra3", "extra4"];
+
+function stopAllVideos(){
+    document.querySelectorAll("video").forEach(v=>{
+        v.pause();
+        v.currentTime = 0;
+    });
+}
+
+function hide(){
+    document.getElementById("vid").style.display="none";
+    document.getElementById("vid2").classList.add("active");
+    let vid1= document.getElementById("vid").querySelector("video");
+    let vid2= document.getElementById("vid2").querySelector("video");
+    vid1.pause(); vid1.currentTime=0;
+    vid2.play();
+}
+
+function show2(){
+    if(extraStep === 0){
+        const vid = document.getElementById("vid");
+        const vid2 = document.getElementById("vid2");
+        const vid3 = document.getElementById("vid3");
+        vid.style.display="none";
+        vid2.classList.remove("active");
+        vid3.style.display="block";
+        let vid1 = vid.querySelector("video");
+        let vid2video = vid2.querySelector("video");
+        vid1.pause(); vid1.currentTime=0;
+        vid2video.pause(); vid2video.currentTime=0;
+        extraStep++;
+        return;
+    }
+
+    if(extraStep > 0) document.getElementById(extras[extraStep-1]).style.display="none";
+
+    if(extraStep < extras.length){
+        const next = document.getElementById(extras[extraStep]);
+        next.style.display="block";
+        stopAllVideos();
+        const v = next.querySelector("video");
+        if(v) v.play();
+
+        const firstpage = document.querySelector(".firstpage");
+        if(next.id === "extra3" || next.id === "extra4") firstpage.style.height="700px";
+        else firstpage.style.height="250px";
+
+        extraStep++;
+    } else {
+        // الانتقال لصفحة Notepad
+        window.location.href = "oo3.html";
+    }
+}
+
+function goBack(){
+    if(extraStep <= 1) return;
+
+    const current = document.getElementById(extras[extraStep-1]);
+    if(current) current.style.display="none";
+
+    const prev = document.getElementById(extras[extraStep-2]);
+    if(prev) prev.style.display="block";
+
+    const firstpage = document.querySelector(".firstpage");
+    if(prev.id === "extra3" || prev.id === "extra4") firstpage.style.height="700px";
+    else firstpage.style.height="250px";
+
+    extraStep--;
+}
+
+const startDate = new Date("2020-10-01T00:00:00");
+
+
+function updateTimer() {
+    const now = new Date();
+    let years  = now.getFullYear() - startDate.getFullYear();
+    let months = now.getMonth() - startDate.getMonth();
+    let days   = now.getDate() - startDate.getDate();
+    let hours  = now.getHours() - startDate.getHours();
+    let minutes = now.getMinutes() - startDate.getMinutes();
+    let seconds = now.getSeconds() - startDate.getSeconds();
+
+    if (seconds < 0) { seconds += 60; minutes--; }
+    if (minutes < 0) { minutes += 60; hours--; }
+    if (hours < 0) { hours += 24; days--; }
+    if (days < 0) {
+        const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += lastMonth.getDate(); months--;
+    }
+    if (months < 0) { months += 12; years--; }
+
+    document.getElementById("time").innerHTML = `${years} year ${months} month ${days} days ${hours} hours ${minutes} minutes ${seconds} second.....;`
+}
+setInterval(updateTimer, 1000);
+</script>
+
+</body>
+</html>
